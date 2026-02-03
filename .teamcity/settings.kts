@@ -67,6 +67,18 @@ object Build1 : BuildType({
         root(DslContext.settingsRoot)
     }
 
+    steps {
+        maven {
+            id = "Maven2"
+
+            conditions {
+                doesNotContain("teamcity.build.branch", "master")
+            }
+            goals = "clear test"
+            userSettingsSelection = "settings (1).xml"
+        }
+    }
+
     features {
         perfmon {
         }
