@@ -40,6 +40,7 @@ object Build : BuildType({
 
     steps {
         maven {
+            name = "Name: Deploy to Nexus (master only)"
             id = "Maven2"
 
             conditions {
