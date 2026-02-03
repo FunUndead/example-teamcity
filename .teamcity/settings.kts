@@ -40,17 +40,6 @@ object Build : BuildType({
 
     steps {
         maven {
-            name = "Build 2"
-            id = "Build_2"
-
-            conditions {
-                doesNotContain("teamcity.build.branch", "master")
-            }
-            goals = "clean test"
-            runnerArgs = "-Dmaven.test.failure.ignore=true"
-            userSettingsSelection = "settings (1).xml"
-        }
-        maven {
             name = "Name: Deploy to Nexus (master only)"
             id = "Maven2"
 
@@ -58,6 +47,17 @@ object Build : BuildType({
                 contains("teamcity.build.branch", "master")
             }
             goals = "clean deploy"
+            runnerArgs = "-Dmaven.test.failure.ignore=true"
+            userSettingsSelection = "settings (1).xml"
+        }
+        maven {
+            name = "Build 2"
+            id = "Build_2"
+
+            conditions {
+                doesNotContain("teamcity.build.branch", "master")
+            }
+            goals = "clean test"
             runnerArgs = "-Dmaven.test.failure.ignore=true"
             userSettingsSelection = "settings (1).xml"
         }
