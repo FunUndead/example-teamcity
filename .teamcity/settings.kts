@@ -29,6 +29,7 @@ version = "2025.11"
 project {
 
     buildType(Build)
+    buildType(Build1)
 }
 
 object Build : BuildType({
@@ -51,6 +52,19 @@ object Build : BuildType({
             runnerArgs = "-Dmaven.test.failure.ignore=true"
             userSettingsSelection = "settings (1).xml"
         }
+    }
+
+    features {
+        perfmon {
+        }
+    }
+})
+
+object Build1 : BuildType({
+    name = "Build 1"
+
+    vcs {
+        root(DslContext.settingsRoot)
     }
 
     features {
