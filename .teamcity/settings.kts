@@ -55,7 +55,7 @@ object Build : BuildType({
             id = "Run_Tests_non_master"
 
             conditions {
-                doesNotEqual("teamcity.build.branch", "master")
+                contains("teamcity.build.branch", "feature/add_reply")
             }
             goals = "clean test"
             userSettingsSelection = "settings (1).xml"
