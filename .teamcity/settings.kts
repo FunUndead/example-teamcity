@@ -50,17 +50,6 @@ object Build : BuildType({
             runnerArgs = "-Dmaven.test.failure.ignore=true"
             userSettingsSelection = "settings (1).xml"
         }
-        maven {
-            name = "Build 2"
-            id = "Build_2"
-
-            conditions {
-                doesNotContain("teamcity.build.branch", "master")
-            }
-            goals = "clean test"
-            runnerArgs = "-Dmaven.test.failure.ignore=true"
-            userSettingsSelection = "settings (1).xml"
-        }
     }
 
     features {
